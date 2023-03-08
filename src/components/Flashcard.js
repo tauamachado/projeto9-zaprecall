@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import play from "../assets/seta_play.png"
 
-export default function Flascard() {
+export default function Flascard({ index, card }) {
     return (
         <PerguntaFechada>
-            <p>Pergunta X</p>
+            <p>Pergunta {index+1}</p>
             <img src={play} alt="Ícone play"/>
         </PerguntaFechada>
     )

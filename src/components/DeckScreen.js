@@ -2,22 +2,28 @@ import Flascard from "./Flashcard";
 import Footer from "./Footer";
 import logo from "../assets/logo.png";
 import styled from "styled-components";
+import deckReact from "../constants/deckReact"
+import { useState } from "react";
 
 export default function DeckScreen() {
-    return (
+    const [counter, setCounter] = useState(0)
+  
+  return (
         <ScreenContainer>
             <LogoContainer>
-                
+                <img src={logo} alt="Raio Amarelo"/>
+                <h1>ZapRecall</h1>
             </LogoContainer>
-            <img src={logo} alt="Raio Amarelo"/>
-            <h1>ZapRecall</h1>
 
-            <Flascard />
-            <Flascard />
-            <Flascard />
-            <Flascard />
+            {deckReact.map((card, i) => (
+                <Flascard 
+                    key={card.question} 
+                    index={i} 
+                    card={card}
+                />
+            ))}
 
-            <Footer />
+            <Footer totalPerguntas={deckReact.length} contadorPerguntas={counter}/>
         </ScreenContainer>
     )
 }
