@@ -12,6 +12,7 @@ const Pergunta = styled.li`
   align-items: center;
   padding: 0 22px 0 15px;
   margin-bottom: 25px;
+  margin-right: 38px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
 
   p {
@@ -21,16 +22,28 @@ const Pergunta = styled.li`
     line-height: 19px;
     color: #333333;
   }
-};
-`
+`;
+
+const QuestionsContainer = styled.ul`
+  list-style: none;
+`;
+
+const arrayPerguntas = [
+  { id: 1, texto: 'Pergunta 1' },
+  { id: 2, texto: 'Pergunta 2' },
+  { id: 3, texto: 'Pergunta 3' },
+  { id: 4, texto: 'Pergunta 4' },
+];
 
 export default function Questions() {
   return (
-    <ul>
-      <Pergunta>
-        <p>Pergunta 1</p>
-        <img src={seta_play} alt={seta_play} />
-      </Pergunta>
-    </ul>
+    <QuestionsContainer>
+      {arrayPerguntas.map((question) => (
+        <Pergunta key={question.id}>
+          <p>{question.texto}</p>
+          <img src={seta_play} alt={seta_play} />
+        </Pergunta>
+      ))}
+    </QuestionsContainer>
   );
 }
